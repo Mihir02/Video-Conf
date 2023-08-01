@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import "./assets/bootstrap/js/bootstrap.min.js";
 
 import { CallEnd, MoreVert, FileCopy } from "@mui/icons-material";
 import "./App.css";
@@ -9,14 +10,14 @@ import "./App.css";
 // Initialize Firebase
 
 const firebaseConfig = {
-  apiKey: import.meta.env.REACT_APP_APIKey,
-  authDomain: import.meta.env.REACT_APP_AuthDomain,
-  projectId: import.meta.env.REACT_APP_ProjectId,
-  storageBucket: import.meta.env.REACT_APP_StorageBucket,
-  messagingSenderId: import.meta.env.REACT_APP_MessagingSenderId,
-  appId: import.meta.env.REACT_APP_APPId,
-  measurementId: import.meta.env.REACT_APP_MeasurementId
-};
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: "webconf-60bc5.firebaseapp.com",
+    projectId: "webconf-60bc5",
+    storageBucket: "webconf-60bc5.appspot.com",
+    messagingSenderId: "1022687823670",
+    appId: "1:1022687823670:web:4d2eb80697f706b9ff9597",
+    measurementId: "G-K29PPB02R3"
+  };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -40,12 +41,12 @@ const servers = {
 const pc = new RTCPeerConnection(servers);
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("py-4 py-xl-5");
   const [joinCode, setJoinCode] = useState("");
 
   return (
       <div className="app">
-          {currentPage === "home" ? (
+          {currentPage === "py-4 py-xl-5" ? (
               <Menu
                   joinCode={joinCode}
                   setJoinCode={setJoinCode}
@@ -61,25 +62,67 @@ function App() {
       </div>
   );
 }
-
 function Menu({ joinCode, setJoinCode, setPage }) {
-  return (
-      <div className="home">
-          <div className="create box">
-              <button onClick={() => setPage("create")}>Create Call</button>
+    return (
+      <section className="py-4 py-xl-5">
+        <div className="container">
+          <div className="text-center p-4 p-lg-5" style={{ paddingTop: '33px', paddingBottom: '0px', marginBottom: '52px' }}>
+            <p className="fw-bold text-primary mb-2">Proud to introduce</p>
+            <h1 className="fw-bold mb-4">Video Conferencing App</h1>
+            <button className="btn btn-light fs-5 py-2 px-4" onClick={() => setPage("create")}>Create Call</button>
           </div>
-
-          <div className="answer box">
-              <input
-                  value={joinCode}
-                  onChange={(e) => setJoinCode(e.target.value)}
-                  placeholder="Join with code"
-              />
-              <button onClick={() => setPage("join")}>Answer</button>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <form className="d-flex justify-content-center flex-wrap" method="post" style={{ marginTop: '43px', paddingBottom: '0px', marginBottom: '87px' }}>
+                <div className="mb-3">
+                  <input className="form-control" type="text" value={joinCode} onChange={(e) => setJoinCode(e.target.value)} placeholder="Join with code..." />
+                </div>
+                <div className="mb-3">
+                  <button className="btn btn-primary ms-2" onClick={() => setPage("join")}>Answer</button>
+                </div>
+              </form>
+            </div>
           </div>
-      </div>
-  );
-}
+        </div>
+        <footer className="text-center py-4">
+          <div className="container">
+            <div className="row row-cols-1 row-cols-lg-3">
+              <div className="col">
+                <p className="text-muted my-2">Copyright&nbsp;© Mihir U</p>
+              </div>
+              <div className="col">
+                <ul className="list-inline my-2">
+                  <li className="list-inline-item me-4">
+                    <div className="bs-icon-circle bs-icon-primary bs-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-facebook">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                      </svg>
+                    </div>
+                  </li>
+                  <li className="list-inline-item me-4">
+                    <div className="bs-icon-circle bs-icon-primary bs-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" className="bi bi-twitter">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                      </svg>
+                    </div>
+                  </li>
+                  <li className="list-inline-item"></li>
+                </ul>
+              </div>
+              <div className="col">
+                <ul className="list-inline my-2">
+                  <li className="list-inline-item"><a className="link-secondary" href="#">Privacy Policy</a></li>
+                  <li className="list-inline-item"><a className="link-secondary" href="#">Terms of Use</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </section>
+    );
+  };
 
 function Videos({ mode, callId, setPage }) {
   const [webcamActive, setWebcamActive] = useState(false);
@@ -259,14 +302,14 @@ function Videos({ mode, callId, setPage }) {
 
           {!webcamActive && (
               <div className="modalContainer">
-                  <div className="modal">
+                  <div className="modal1">
                       <h3>
                           Turn on your camera and microphone and start the
                           call
                       </h3>
-                      <div className="container">
+                      <div className="container2">
                           <button
-                              onClick={() => setPage("home")}
+                              onClick={() => setPage("py-4 py-xl-5")}
                               className="secondary"
                           >
                               Cancel
