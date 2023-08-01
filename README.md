@@ -1,4 +1,13 @@
-# React + Vite
+# Introduction
+
+This app is built with Firebase as signaling server and WebRTC API...and React for front-end.
+
+## Setup
+
+-npm i
+-npm run dev
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
